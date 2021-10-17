@@ -8,7 +8,7 @@ The following is the state of the assignment:
 
 # Reasons for not completing the assignment
 
-I acknowledge that I was given full 2 days to complete it, however some circumstances has led into making the whole project at Sunday evening. 
+I acknowledge that I was given full 2 days to complete it, however some circumstances has led into making the whole project at Sunday evening.
 I have tried my best to achieve as much progress as possible
 
 # Intentions
@@ -20,3 +20,7 @@ then be checked with a database if they are correct and have the power to do a s
 * Each of the repositories connects to one repository, which is an intuitive way for me to make this work. There should also be Student-Course repository as well.
 * Student-Course entity should connect students and courses, so it contains just students and their grades
 * Similar table should be created for teachers, to track which courses are being taught by which teachers
+
+# Scala part
+
+Part of assignment with Scala is inside the src/main/scala folder, just wanted to keep it together.
