@@ -18,7 +18,8 @@ public class StudentController {
      */
     @GetMapping("/students")
     void allStudents() {
-        new StudentRepository().insertStudent(new StudentEntity("ofomin","o","pwd"));
+        new StudentRepository()
+                .insertStudent(new StudentEntity("ofomin","o","a","pwd"));
     }
 
     /**

@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name="students")
 public class StudentEntity {
 
-
     @Column @Id @Getter
     private String username;
 
@@ -21,6 +20,9 @@ public class StudentEntity {
     @Column @Getter
     private String lastName;
 
+    @Column @Getter
+    private String password;
+
     public StudentEntity() {}
 
     /**
@@ -29,10 +31,11 @@ public class StudentEntity {
      * @param firstName first name of a student
      * @param lastName last name of a student
      */
-    public StudentEntity(String username, String firstName, String lastName) {
+    public StudentEntity(String username, String firstName, String lastName, String password) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.ing.repositories;
 
+import com.ing.entities.AdminEntity;
 import com.ing.entities.StudentEntity;
+import com.ing.entities.TeacherEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,17 +11,13 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-
-/**
- * Student repository, handles everything with a database.
- */
 @Repository
-public class StudentRepository {
+public class TeacherRepository {
 
     @PersistenceContext
     private static final EntityManagerFactory emFactory;
 
-    private static final String PERSISTENCE_UNIT_NAME = "com.ing.students";
+    private static final String PERSISTENCE_UNIT_NAME = "com.ing.teachers";
 
     static {
         emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -27,28 +25,28 @@ public class StudentRepository {
 
     /**
      * Getter for EntityManager
-     * @return EntityManager for the student
+     * @return EntityManager for the teacher persistence unit
      */
     public static EntityManager getEntityManager() {
         return emFactory.createEntityManager();
     }
 
     /**
-     * Inserts a student to a database.
-     * @param student Student to insert
+     * Inserts a teacher to a database.
+     * @param teacher Teacher to insert
      */
     @Transactional
-    public void insertStudent(StudentEntity student) {
+    public void insertTeacher(TeacherEntity teacher) {
         EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();
         try {
-            entityManager.createNativeQuery("INSERT INTO students (username, firstname, lastname, password) " +
+            entityManager.createNativeQuery("INSERT INTO teachers (username, firstname, lastname, password) " +
                             "VALUES (?,?,?,?) " +
-                            "ON CONFLICT ON CONSTRAINT students_pkey DO NOTHING")
-                    .setParameter(1, student.getUsername())
-                    .setParameter(2, student.getFirstName())
-                    .setParameter(3, student.getLastName())
-                    .setParameter(4, student.getPassword())
+                            "ON CONFLICT ON CONSTRAINT teachers_pkey DO NOTHING")
+                    .setParameter(1, teacher.getUsername())
+                    .setParameter(2, teacher.getFirstName())
+                    .setParameter(3, teacher.getLastName())
+                    .setParameter(4, teacher.getPassword())
                     .executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,5 +58,4 @@ public class StudentRepository {
         }
 
     }
-
 }

@@ -1,10 +1,9 @@
-package com.ing.springboot;
+package com.ing;
 
+import com.ing.controllers.AdminController;
 import com.ing.controllers.StudentController;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -13,8 +12,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = StudentController.class)
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@ComponentScan(basePackageClasses = {StudentController.class, AdminController.class})
+// Not exactly sure why it can't scan them
 public class IngAssignmentApplication {
 
 	public static void main(String[] args) {
